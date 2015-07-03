@@ -2,4 +2,5 @@ etc/syncwidget/*
 usr/lib/lib*.so.*
 usr/bin/msyncd
 usr/lib/systemd/user/msyncd.service
+usr/share/upstart/sessions/msyncd.conf
 

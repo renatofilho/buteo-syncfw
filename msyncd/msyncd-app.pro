@@ -59,13 +59,16 @@ target.path = /usr/bin/
 loglevel.files = bin/set_sync_log_level
 loglevel.path = /etc/buteo/
 service.files = bin/msyncd.service
+upstart.files = bin/msyncd.conf
 service.path = /usr/lib/systemd/user/
+upstart.path = /usr/share/upstart/sessions/
 syncwidget.path = /etc/syncwidget/
 syncwidget.files = com.meego.msyncd
 INSTALLS += target \
     loglevel \
     syncwidget \
-    service
+    service \
+    upstart
 
 # #####################################################################
 # make coverage (debug)
