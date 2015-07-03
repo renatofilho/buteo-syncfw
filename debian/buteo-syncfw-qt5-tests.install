@@ -1,0 +1,9 @@
+opt/tests/buteo-syncfw/*
+opt/tests/buteo-syncfw/msyncdtests/*
+opt/tests/buteo-syncfw/syncprofiletests/*
+opt/tests/buteo-syncfw/syncprofiletests/testprofiles/user/client/*
+opt/tests/buteo-syncfw/syncprofiletests/testprofiles/user/storage/*
+opt/tests/buteo-syncfw/syncprofiletests/testprofiles/user/sync/*
+opt/tests/buteo-syncfw/pluginmanagertests/*
+opt/tests/buteo-syncfw/syncfwclienttests/*
+usr/share/accounts/services/*

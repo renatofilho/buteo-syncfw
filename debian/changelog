@@ -1,3 +1,15 @@
+buteo-syncfw (0.6.1ubuntu1) UNRELEASED; urgency=medium
+  
+  [ Bernd Wachter ]
+  * Change from xdg autostart to providing an user session service file
+  * Update to nemo upstream, contributing to JB#2310
+
+  [ Renato Araujo Oliveira Filho ]
+  * Simplified package.
+  * Renamed debian package
+
+ -- Renato Araujo Oliveira Filho <renato.filho@canonical.com>  Wed, 25 Feb 2015 12:43:59 -0300
+
 sync-fw (0.5.40) stable; urgency=low
 
   * Fixes: NB#266496 - Ovi.com sync doesn't start after account is configured thru accounts application

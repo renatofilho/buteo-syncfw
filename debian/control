@@ -1,41 +1,56 @@
-Source: sync-fw
+Source: buteo-syncfw
 Section: utils
 Priority: optional
 Maintainer: Duggirala Karthik <karthik.2.duggirala@nokia.com>
-Build-Depends: debhelper (>= 5), cdbs, doxygen, libqt4-dev, libdbus-1-dev , accounts-qt-dev, libqtm-systeminfo-dev, libiphb-dev, libsignon-qt-dev, aegis-builder
-Standards-Version: 3.7.2
+Build-Depends: cdbs,
+               debhelper (>= 5),
+               doxygen,
+               libaccounts-qt5-dev, 
+               libdbus-1-dev,
+               libiphb-dev,
+               libsignon-qt5-dev,
+               qtsystems5-dev,
+               qt5-default,
+Standards-Version: 3.9.5
+Homepage: https://github.com/nemomobile/buteo-syncfw.git
 
-Package: sync-fw
+Package: buteo-syncfw-qt5
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
 Description: Synchronization backend
  Synchronization backend, plugin manager, profile db, and conflict resolver.
 
-Package: sync-fw-dev
+Package: buteo-syncfw-qt5-dev
 Architecture: any
-Depends: debhelper (>= 5), sync-fw(= ${binary:Version}), cdbs, libdbus-1-dev 
+Depends: debhelper (>= 5),
+         buteo-syncfw-qt5 (= ${binary:Version}),
+         cdbs,
+         libdbus-1-dev,
 Description: Files required for synchronizer plugin development
  Header file needed for making plugins.
  
-Package: sync-fw-dbg
+Package: buteo-syncfw-qt5-dbg
 Architecture: any
-Depends: sync-fw (= ${binary:Version})
+Depends: buteo-syncfw-qt5 (= ${binary:Version}),
 Description: Debug symbols for sync-fw
   Debug symbols for sync-fw
  
-Package: sync-fw-doc
+Package: buteo-syncfw-qt5-doc
 Section: doc
 Architecture: any
 Description: API documentation for sync-fw.
  Empty documentation package for sync-fw.
 
-Package: sync-fw-tests
-Section: tests
+Package: buteo-syncfw-qt5-tests
+Section: devel
 Priority: optional
 Architecture: any
-Depends: ${shlibs:Depends}, sync-fw, testrunner-lite, meegotouch-dev-tools, timed
-XB-Maemo-CI-Packages: sync-fw-tests
-XB-Maemo-CI-Stage: staging 
+Depends: ${shlibs:Depends},
+         buteo-syncfw-qt5 (= ${binary:Version}),
+         testrunner-lite,
+         meegotouch-dev-tools,
+         timed,
 Description: Module test package for sync-fw.
  Module test package for sync-fw.
 
