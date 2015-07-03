@@ -26,6 +26,8 @@
 #include "Profile.h"
 #include "ProfileEngineDefs.h"
 
+#include <QTimer>
+
 static const QString ACCOUNTS_GLOBAL_SERVICE("global");
 
 using namespace Buteo;
@@ -42,7 +44,8 @@ AccountsHelper::AccountsHelper(ProfileManager &aProfileManager, QObject *aParent
     QObject::connect(iAccountManager, SIGNAL(accountUpdated(Accounts::AccountId)),
                      this, SLOT(slotAccountUpdated(Accounts::AccountId)));
 
-    registerAccountListeners();
+    // load accounts after return from contructor
+    QTimer::singleShot(0, this, SLOT(registerAccountListeners()));
 }
 
 AccountsHelper::~AccountsHelper()
@@ -86,7 +89,7 @@ void AccountsHelper::slotAccountCreated(Accounts::AccountId id)
 
         if (profileFoundAndCreated == false)
         {
-            // Fetch the key "remote_service_name" from the account settings and 
+            // Fetch the key "remote_service_name" from the account settings and
             // use it to create a profile
             QString profileName = newAccount->valueAsString(REMOTE_SERVICE_NAME);
             LOG_DEBUG("Profile name from account setting:" << profileName);
@@ -454,6 +457,15 @@ void AccountsHelper::registerAccountListener(Accounts::AccountId id)
     QObject::connect(account, SIGNAL(enabledChanged(const QString&, bool)),
                      this, SLOT(slotAccountEnabledChanged(const QString&, bool)));
 
+    // Account SOC
+    QList<SyncProfile*> profiles = getProfilesByAccountId(id);
+    foreach(SyncProfile *profile, profiles)
+    {
+        if(profile->isSOCProfile())
+        {
+            emit enableSOC(profile->name());
+        }
+    }
     account->selectService();
     account->beginGroup("scheduler");
     LOG_DEBUG("Watching Group :" << account->group());
